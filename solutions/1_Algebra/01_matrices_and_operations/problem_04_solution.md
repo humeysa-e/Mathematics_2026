@@ -31,10 +31,24 @@ $$
 
 **Property/method used:**
 
-$(XY)_{ij}=\sum_k x_{ik}y_{kj}$ (row times column).
+$$
+(XY)_{ij}=\sum_k x_{ik}\,y_{kj}
+$$
+
+This is "row times column".
 
 Noncommutativity means that the order of the factors matters: in general $AB\neq BA$, even when both products are defined and have the same size. Here the first entries already differ ($8\neq2$), so $AB\neq BA$. This is different from numbers, where $ab=ba$ always.
 
-**Verification:**
+Recompute one entry. $(AB)$ entry in row 1, column 2 is row 1 of $A$ times column 2 of $B$:
 
-Recompute one entry: $(AB)_{12}$ is row 1 of $A$ times column 2 of $B$: $(1,2)\cdot(0,1)=1\cdot0+2\cdot1=2$, which matches. Also $(BA)_{11}=(2,0)\cdot(1,0)=2$, which matches.
+$$
+(1,2)\cdot(0,1)=1\cdot0+2\cdot1=2,
+$$
+
+which matches. Also, the first entry of $BA$ is
+
+$$
+(2,0)\cdot(1,0)=2,
+$$
+
+which matches.
