@@ -21,7 +21,9 @@ Then $3A-2B$ is computed entry by entry: $3-8=-5$, $6-(-4)=10$, $-3-0=-3$, $9-10
 
 **Property/method used:**
 
-$(A\pm B)_{ij}=a_{ij}\pm b_{ij}$ and $(cA)_{ij}=c\,a_{ij}$.
+$$
+(A\pm B)_{ij}=a_{ij}\pm b_{ij},\qquad (cA)_{ij}=c\,a_{ij}
+$$
 
 Matrix addition is possible only for matrices of the same size, because each entry $a_{ij}$ needs a partner entry $b_{ij}$ in the same position. If the sizes differ, some entries have no partner, so the sum is not defined.
 
