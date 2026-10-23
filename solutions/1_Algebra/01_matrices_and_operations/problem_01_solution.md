@@ -27,8 +27,8 @@ $$
 * $b_{32} = 1$
 
 **3. Write the second row of $A$ and the first column of $B$ as vectors.**
-* Second row of $A$: $\begin{pmatrix} 0 & 4 & 5 \end{pmatrix}$
-* First column of $B$: $\begin{pmatrix} 1 \\ -2 \\ 4 \end{pmatrix}$
+* Second row of $A$: $(0,\ 4,\ 5)$
+* First column of $B$: $(1,\ -2,\ 4)^{T}$
 
 ---
 
