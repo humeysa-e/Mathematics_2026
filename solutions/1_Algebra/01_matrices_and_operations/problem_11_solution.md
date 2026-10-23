@@ -47,7 +47,13 @@ $$
 
 ## 4. Check
 
-Take $B=\begin{pmatrix}a & b \cr 0 & a\end{pmatrix}$. Then
+Take
+
+$$
+B=\begin{pmatrix}a & b \cr 0 & a\end{pmatrix}.
+$$
+
+Then
 
 $$
 AB=\begin{pmatrix}a & a+b \cr 0 & a\end{pmatrix}=BA.
