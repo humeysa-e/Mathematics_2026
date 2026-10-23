@@ -23,7 +23,7 @@ $$
 Step by step:
 
 $$
-\begin{pmatrix}1 \cr 2\end{pmatrix}\xrightarrow{\;S\;}\begin{pmatrix}2 \cr 2\end{pmatrix}\xrightarrow{\;R\;}\begin{pmatrix}-2 \cr 2\end{pmatrix}.
+\begin{pmatrix}1 \cr 2\end{pmatrix}\xrightarrow{S}\begin{pmatrix}2 \cr 2\end{pmatrix}\xrightarrow{R}\begin{pmatrix}-2 \cr 2\end{pmatrix}.
 $$
 
 ## 2. Computing $SRx$
@@ -41,7 +41,7 @@ $$
 Step by step:
 
 $$
-\begin{pmatrix}1 \cr 2\end{pmatrix}\xrightarrow{\;R\;}\begin{pmatrix}-2 \cr 1\end{pmatrix}\xrightarrow{\;S\;}\begin{pmatrix}-4 \cr 1\end{pmatrix}.
+\begin{pmatrix}1 \cr 2\end{pmatrix}\xrightarrow{R}\begin{pmatrix}-2 \cr 1\end{pmatrix}\xrightarrow{S}\begin{pmatrix}-4 \cr 1\end{pmatrix}.
 $$
 
 ## 3. Comparison
@@ -54,7 +54,10 @@ The results are different, so $RS\neq SR$.
 
 ## 4. Why the order matters
 
-The matrix $S$ stretches only the horizontal direction, by a factor of $2$. If we scale first, the stretching happens along the original $x$-axis, and the rotation then turns the stretched vector. If we rotate first, the horizontal direction is no longer the direction of the original vector's components, so the stretching is applied to different components and the final vector differs.
+The matrix $S$ stretches only the horizontal component of a vector, by a factor of $2$. The two orders stretch different components:
+
+- In $RSx$, we scale first. The original horizontal component $1$ is doubled to $2$, and then the rotation turns $(2,2)$ into $(-2,2)$.
+- In $SRx$, we rotate first. The rotation turns $(1,2)$ into $(-2,1)$, so the horizontal component is now $-2$ (it came from the original vertical component). Scaling then doubles it to $-4$.
 
 In general, a product of matrices applies the transformations from right to left, and since matrix multiplication is not commutative, changing the order changes the transformation.
 
