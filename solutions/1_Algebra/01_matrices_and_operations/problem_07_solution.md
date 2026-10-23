@@ -6,7 +6,11 @@ $$
 A=\begin{pmatrix}2 & 1 \cr 0 & 2\end{pmatrix}
 $$
 
-let $I=\begin{pmatrix}1 & 0 \cr 0 & 1\end{pmatrix}$ and $0=\begin{pmatrix}0 & 0 \cr 0 & 0\end{pmatrix}$.
+Let
+
+$$
+I=\begin{pmatrix}1 & 0 \cr 0 & 1\end{pmatrix},\qquad 0=\begin{pmatrix}0 & 0 \cr 0 & 0\end{pmatrix}.
+$$
 
 ## 1. Roles of $I$ and $0$
 
@@ -42,6 +46,12 @@ $$
 A^n=\begin{pmatrix}2^n & n\cdot 2^{n-1} \cr 0 & 2^n\end{pmatrix}.
 $$
 
-This matches $A^1$, $A^2$ and $A^3$ above. It can also be seen by writing $A=2I+N$ with $N=\begin{pmatrix}0 & 1 \cr 0 & 0\end{pmatrix}$. Since $N^2=0$, we get $A^n=2^nI+n\cdot 2^{n-1}N$.
+This matches $A^1$, $A^2$ and $A^3$ above. It can also be seen by writing $A=2I+N$ with
+
+$$
+N=\begin{pmatrix}0 & 1 \cr 0 & 0\end{pmatrix}.
+$$
+
+Since $N^2=0$, we get $A^n=2^nI+n\cdot 2^{n-1}N$.
 
 > **Takeaway:** $I$ and $0$ are the neutral elements of multiplication and addition, and powers of a matrix can follow a regular pattern.
