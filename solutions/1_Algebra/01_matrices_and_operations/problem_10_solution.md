@@ -32,12 +32,17 @@ $$
 
 ## 3. Comparison
 
-The first column of $AB$ is $\begin{pmatrix}-1 \cr 2\end{pmatrix}=Ab_1$, and the second column is $\begin{pmatrix}2 \cr 1\end{pmatrix}=Ab_2$. In other words,
+The first column of $AB$ equals $Ab_1$, and the second column equals $Ab_2$:
+
+$$
+\begin{pmatrix}-1 \cr 2\end{pmatrix}=Ab_1,\qquad \begin{pmatrix}2 \cr 1\end{pmatrix}=Ab_2.
+$$
+
+In other words,
 
 $$
 AB=\begin{pmatrix}Ab_1 & Ab_2\end{pmatrix}.
 $$
-
 ## 4. Why this happens
 
 The entry in row $i$ and column $j$ of $AB$ is the dot product of row $i$ of $A$ with column $j$ of $B$. Column $j$ of $AB$ therefore collects these dot products for all rows $i$, and this is exactly the product of $A$ with the single column $b_j$, that is, $Ab_j$. Each column of $B$ is transformed by $A$ independently of the other columns.
