@@ -1,37 +1,94 @@
-### Exercise 2. Addition and Scalar Multiplication - Solutions
+# Exercise 2. Addition and Scalar Multiplication
 
-**Result:**
+## Question
 
-$$
-A+B=\begin{pmatrix} 5 & 0 \\ -1 & 8 \end{pmatrix},\qquad
-A-B=\begin{pmatrix} -3 & 4 \\ -1 & -2 \end{pmatrix},\qquad
-3A-2B=\begin{pmatrix} -5 & 10 \\ -3 & -1 \end{pmatrix}
-$$
-
-**Main steps:**
-
-Matrices are added and subtracted entry by entry. For scalar multiplication, every entry is multiplied by the scalar.
+For
 
 $$
-3A=\begin{pmatrix} 3 & 6 \\ -3 & 9 \end{pmatrix},\qquad
-2B=\begin{pmatrix} 8 & -4 \\ 0 & 10 \end{pmatrix}
+A=
+\begin{pmatrix}
+1 & 2 \\
+-1 & 3
+\end{pmatrix}, \qquad
+B=
+\begin{pmatrix}
+4 & -2 \\
+0 & 5
+\end{pmatrix}
 $$
 
-Then $3A-2B$ is computed entry by entry: $3-8=-5$, $6-(-4)=10$, $-3-0=-3$, $9-10=-1$.
-
-**Property/method used:**
+compute
 
 $$
-(A\pm B)_{ij}=a_{ij}\pm b_{ij},\qquad (cA)_{ij}=c\,a_{ij}
+A+B, \qquad A-B, \qquad 3A-2B.
 $$
 
-Matrix addition is possible only for matrices of the same size, because each entry $a_{ij}$ needs a partner entry $b_{ij}$ in the same position. If the sizes differ, some entries have no partner, so the sum is not defined.
+Explain why matrix addition is possible only for matrices of the same size.
 
-**Verification:**
+> **Why this exercise:** reinforces entry-by-entry operations and the importance of compatible dimensions.
 
-$(A+B)+(A-B)$ should equal $2A$:
+## Solution
+
+**Part 1: Sum $A+B$.** Matrices of the same size are added entry by entry, that is, $(A+B)_{ij} = a_{ij} + b_{ij}$. Both $A$ and $B$ are $2 \times 2$, so
 
 $$
-\begin{pmatrix} 5 & 0 \\ -1 & 8 \end{pmatrix}+\begin{pmatrix} -3 & 4 \\ -1 & -2 \end{pmatrix}
-=\begin{pmatrix} 2 & 4 \\ -2 & 6 \end{pmatrix}=2A
+A+B =
+\begin{pmatrix}
+1+4 & 2+(-2) \\
+-1+0 & 3+5
+\end{pmatrix}
+=
+\begin{pmatrix}
+5 & 0 \\
+-1 & 8
+\end{pmatrix}.
 $$
+
+**Part 2: Difference $A-B$.** Subtraction also works entry by entry, $(A-B)_{ij} = a_{ij} - b_{ij}$, so
+
+$$
+A-B =
+\begin{pmatrix}
+1-4 & 2-(-2) \\
+-1-0 & 3-5
+\end{pmatrix}
+=
+\begin{pmatrix}
+-3 & 4 \\
+-1 & -2
+\end{pmatrix}.
+$$
+
+**Part 3: Combination $3A-2B$.** Multiplying a matrix by a scalar $c$ multiplies every entry by $c$, that is, $(cA)_{ij} = c\,a_{ij}$. First we compute $3A$ and $2B$:
+
+$$
+3A =
+\begin{pmatrix}
+3 & 6 \\
+-3 & 9
+\end{pmatrix}, \qquad
+2B =
+\begin{pmatrix}
+8 & -4 \\
+0 & 10
+\end{pmatrix}.
+$$
+
+Then we subtract entry by entry:
+
+$$
+3A-2B =
+\begin{pmatrix}
+3-8 & 6-(-4) \\
+-3-0 & 9-10
+\end{pmatrix}
+=
+\begin{pmatrix}
+-5 & 10 \\
+-3 & -1
+\end{pmatrix}.
+$$
+
+**Part 4: Why the sizes must be equal.** Addition is defined entry by entry: each entry $a_{ij}$ of $A$ is paired with the entry $b_{ij}$ in the same position of $B$. If $A$ and $B$ have different sizes, some entries of one matrix have no partner in the other matrix. For example, a $2 \times 3$ matrix has an entry $a_{23}$, but a $2 \times 2$ matrix has no entry $b_{23}$, so $a_{23} + b_{23}$ cannot be formed. Therefore $A+B$ is defined only when $A$ and $B$ have the same number of rows and the same number of columns.
+
+**Verification.** We check one entry of $3A-2B$ in a different way. The entry in row 2, column 2 is $3a_{22} - 2b_{22} = 3 \cdot 3 - 2 \cdot 5 = 9 - 10 = -1$, which matches the result above.
