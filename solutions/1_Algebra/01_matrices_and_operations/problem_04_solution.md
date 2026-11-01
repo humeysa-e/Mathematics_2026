@@ -1,54 +1,39 @@
-### Exercise 4. Matrix Multiplication and Noncommutativity - Solutions
+# Exercise 4. Matrix Multiplication and Noncommutativity
 
-**Given:**
+## Question
 
-$$
-A=\begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix},\qquad
-B=\begin{pmatrix} 2 & 0 \\ 3 & 1 \end{pmatrix}
-$$
+For
 
-**Result:**
+```math
+A=\begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}, \qquad B=\begin{pmatrix} 2 & 0 \\ 3 & 1 \end{pmatrix}
+```
 
-$$
-AB=\begin{pmatrix} 8 & 2 \\ 3 & 1 \end{pmatrix},\qquad
-BA=\begin{pmatrix} 2 & 4 \\ 3 & 7 \end{pmatrix},\qquad
-AB\neq BA
-$$
+compute $`AB`$ and $`BA`$. Is $`AB=BA`$? Use this example to explain what noncommutativity of matrix multiplication means.
 
-**Main steps:**
+> **Why this exercise:** shows one of the most important differences between matrix multiplication and multiplication of numbers.
 
-Each entry of a product is the dot product of a row of the first matrix with a column of the second matrix.
+## Solution
 
-$$
-AB=\begin{pmatrix} 1\cdot2+2\cdot3 & 1\cdot0+2\cdot1 \\ 0\cdot2+1\cdot3 & 0\cdot0+1\cdot1 \end{pmatrix}
-=\begin{pmatrix} 8 & 2 \\ 3 & 1 \end{pmatrix}
-$$
+**Rule.** For $`2 \times 2`$ matrices, the entry $`(XY)_{ij}`$ is the dot product of row $`i`$ of $`X`$ with column $`j`$ of $`Y`$, that is, $`(XY)_{ij} = x_{i1}y_{1j} + x_{i2}y_{2j}`$.
 
-$$
-BA=\begin{pmatrix} 2\cdot1+0\cdot0 & 2\cdot2+0\cdot1 \\ 3\cdot1+1\cdot0 & 3\cdot2+1\cdot1 \end{pmatrix}
-=\begin{pmatrix} 2 & 4 \\ 3 & 7 \end{pmatrix}
-$$
+**Part 1: The product $`AB`$.** We multiply the rows of $`A`$ by the columns of $`B`$:
 
-**Property/method used:**
+```math
+AB = \begin{pmatrix} 1\cdot2+2\cdot3 & 1\cdot0+2\cdot1 \\ 0\cdot2+1\cdot3 & 0\cdot0+1\cdot1 \end{pmatrix} = \begin{pmatrix} 8 & 2 \\ 3 & 1 \end{pmatrix}.
+```
 
-$$
-(XY)_{ij}=\sum_k x_{ik}\,y_{kj}
-$$
+**Part 2: The product $`BA`$.** Now the roles are exchanged, so we multiply the rows of $`B`$ by the columns of $`A`$:
 
-This is "row times column".
+```math
+BA = \begin{pmatrix} 2\cdot1+0\cdot0 & 2\cdot2+0\cdot1 \\ 3\cdot1+1\cdot0 & 3\cdot2+1\cdot1 \end{pmatrix} = \begin{pmatrix} 2 & 4 \\ 3 & 7 \end{pmatrix}.
+```
 
-Noncommutativity means that the order of the factors matters: in general $AB\neq BA$, even when both products are defined and have the same size. Here the first entries already differ ($8\neq2$), so $AB\neq BA$. This is different from numbers, where $ab=ba$ always.
+**Part 3: Is $`AB=BA`$?** Two matrices are equal only if all their corresponding entries are equal. Here the entries in row 1, column 1 are different ($`8 \neq 2`$), so
 
-Recompute one entry. $(AB)$ entry in row 1, column 2 is row 1 of $A$ times column 2 of $B$:
+```math
+AB \neq BA.
+```
 
-$$
-(1,2)\cdot(0,1)=1\cdot0+2\cdot1=2,
-$$
+**Part 4: Noncommutativity.** For real numbers, the order of multiplication does not matter, $`ab=ba`$. This example shows that for matrices the order matters: even though both $`AB`$ and $`BA`$ are defined and have the same size $`2 \times 2`$, they give different results. Noncommutativity means that in general $`AB \neq BA`$, so we cannot swap the factors in a matrix product. (For some special pairs of matrices $`AB=BA`$ does hold, but it is not true in general, and one counterexample like this one is enough to show it.)
 
-which matches. Also, the first entry of $BA$ is
-
-$$
-(2,0)\cdot(1,0)=2,
-$$
-
-which matches.
+**Verification.** We recompute one entry in a different way. The entry in row 1, column 1 of $`AB`$ is $`1\cdot2+2\cdot3=2+6=8`$, and the entry in row 1, column 1 of $`BA`$ is $`2\cdot1+0\cdot0=2`$. These match the results above, and they are different.
