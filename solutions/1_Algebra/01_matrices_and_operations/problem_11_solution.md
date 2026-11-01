@@ -1,64 +1,60 @@
-# Exercise 11. When Do Matrices Commute?: Solution
+# Exercise 11. When Do Matrices Commute?
+
+## Question
 
 Given
 
-$$
-A=\begin{pmatrix}1 & 1 \cr 0 & 1\end{pmatrix},\qquad B=\begin{pmatrix}a & b \cr c & d\end{pmatrix}.
-$$
+```math
+A=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}, \qquad B=\begin{pmatrix} a & b \\ c & d \end{pmatrix}.
+```
 
-## 1. Computing $AB$ and $BA$
+Find the conditions on $`a,b,c,d`$ under which $`AB=BA`$. Describe the general form of all such matrices $`B`$.
 
-$$
-AB=\begin{pmatrix}1 & 1 \cr 0 & 1\end{pmatrix}\begin{pmatrix}a & b \cr c & d\end{pmatrix}=\begin{pmatrix}a+c & b+d \cr c & d\end{pmatrix},
-$$
+> **Why this exercise:** deepens the idea of noncommutativity by finding the conditions under which commutativity does hold.
 
-$$
-BA=\begin{pmatrix}a & b \cr c & d\end{pmatrix}\begin{pmatrix}1 & 1 \cr 0 & 1\end{pmatrix}=\begin{pmatrix}a & a+b \cr c & c+d\end{pmatrix}.
-$$
+## Solution
 
-## 2. Conditions for $AB=BA$
+**Rule.** Two matrices are equal only if all their corresponding entries are equal. So we compute $`AB`$ and $`BA`$ for the general matrix $`B`$, and then compare the four entries one by one. Both products are defined and are $`2 \times 2`$ matrices.
 
-Two matrices are equal exactly when all their entries are equal. Comparing entry by entry:
+**Part 1: The product $`AB`$.** We multiply rows of $`A`$ by columns of $`B`$:
 
-- Entry $(1,1)$: $a+c=a$, so $c=0$.
-- Entry $(1,2)$: $b+d=a+b$, so $d=a$.
-- Entry $(2,1)$: $c=c$, which always holds.
-- Entry $(2,2)$: $d=c+d$, so $c=0$.
+```math
+AB=\begin{pmatrix} 1\cdot a+1\cdot c & 1\cdot b+1\cdot d \\ 0\cdot a+1\cdot c & 0\cdot b+1\cdot d \end{pmatrix}=\begin{pmatrix} a+c & b+d \\ c & d \end{pmatrix}.
+```
 
-Therefore $AB=BA$ if and only if
+**Part 2: The product $`BA`$.** We multiply rows of $`B`$ by columns of $`A`$:
 
-$$
-c=0\quad\text{and}\quad d=a,
-$$
+```math
+BA=\begin{pmatrix} a\cdot1+b\cdot0 & a\cdot1+b\cdot1 \\ c\cdot1+d\cdot0 & c\cdot1+d\cdot1 \end{pmatrix}=\begin{pmatrix} a & a+b \\ c & c+d \end{pmatrix}.
+```
 
-while $a$ and $b$ can be arbitrary.
+**Part 3: Comparing the entries.** The condition $`AB=BA`$ means that all four entries are equal:
 
-## 3. General form of $B$
+- Row 1, column 1: $`a+c=a`$, so $`c=0`$.
+- Row 1, column 2: $`b+d=a+b`$, so $`d=a`$.
+- Row 2, column 1: $`c=c`$, which is always true.
+- Row 2, column 2: $`d=c+d`$, so $`c=0`$.
 
-$$
-B=\begin{pmatrix}a & b \cr 0 & a\end{pmatrix},\qquad a,b\in\mathbb{R}.
-$$
+The second and fourth conditions do not give anything new beyond $`c=0`$ and $`d=a`$. So $`AB=BA`$ holds exactly when
 
-This can also be written as
+```math
+c=0 \quad \text{and} \quad d=a,
+```
 
-$$
-B=aI+bN,\qquad N=\begin{pmatrix}0 & 1 \cr 0 & 0\end{pmatrix}.
-$$
+while $`a`$ and $`b`$ can be any numbers.
 
-## 4. Check
+**Part 4: The general form of $`B`$.** Substituting $`c=0`$ and $`d=a`$ into $`B`$, we get
 
-Take
+```math
+B=\begin{pmatrix} a & b \\ 0 & a \end{pmatrix}, \qquad a,b \in \mathbb{R}.
+```
 
-$$
-B=\begin{pmatrix}a & b \cr 0 & a\end{pmatrix}.
-$$
+Such a matrix can also be written as $`B=aI+bN`$, where $`N=\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}`$. Since $`A=I+N`$, the matrices that commute with $`A`$ are exactly the matrices built from $`I`$ and $`N`$ in this way.
 
-Then
+**Verification.** We check that every matrix of this form really commutes with $`A`$:
 
-$$
-AB=\begin{pmatrix}a & a+b \cr 0 & a\end{pmatrix}=BA.
-$$
+```math
+AB=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} a & b \\ 0 & a \end{pmatrix}=\begin{pmatrix} a & a+b \\ 0 & a \end{pmatrix}, \qquad BA=\begin{pmatrix} a & b \\ 0 & a \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}=\begin{pmatrix} a & a+b \\ 0 & a \end{pmatrix}.
+```
 
-The matrices that commute with $A$ are exactly the upper triangular matrices with equal diagonal entries.
-
-> **Takeaway:** matrix multiplication is not commutative in general, but for a given matrix $A$ the matrices that commute with it can be found by comparing entries of $AB$ and $BA$.
+The two products are equal, so the condition is also sufficient. For example, $`B=\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}`$ ($`a=1,\ b=0`$) commutes with $`A`$, but $`B=\begin{pmatrix} 2 & 0 \\ 3 & 1 \end{pmatrix}`$ does not ($`c=3\neq0`$).
