@@ -1,68 +1,66 @@
-# Exercise 15. Associativity of Multiplication and Different Calculation Paths: Solution
+# Exercise 15. Associativity of Multiplication and Different Calculation Paths
+
+## Question
 
 Given
 
-$$
-A=\begin{pmatrix}1 & 2 & 0 \cr 0 & 1 & 1\end{pmatrix},\qquad B=\begin{pmatrix}1 & 0 \cr 2 & 1 \cr -1 & 3\end{pmatrix},\qquad C=\begin{pmatrix}2 & 1 \cr 0 & -1\end{pmatrix}.
-$$
+```math
+A=\begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & 1 \end{pmatrix}, \quad B=\begin{pmatrix} 1 & 0 \\ 2 & 1 \\ -1 & 3 \end{pmatrix}, \quad C=\begin{pmatrix} 2 & 1 \\ 0 & -1 \end{pmatrix}.
+```
 
-The sizes are $A$: $2\times 3$, $B$: $3\times 2$ and $C$: $2\times 2$.
+Compute $`(AB)C`$ and $`A(BC)`$. Compare the results and the number of intermediate operations. Explain what associativity of matrix multiplication means in this example.
 
-## 1. Computing $(AB)C$
+> **Why this exercise:** reinforces associativity by comparing two mathematically equivalent calculation paths.
 
-First, $AB$ is $2\times 2$:
+## Solution
 
-$$
-AB=\begin{pmatrix}1\cdot 1+2\cdot 2+0\cdot(-1) & 1\cdot 0+2\cdot 1+0\cdot 3 \cr 0\cdot 1+1\cdot 2+1\cdot(-1) & 0\cdot 0+1\cdot 1+1\cdot 3\end{pmatrix}=\begin{pmatrix}5 & 2 \cr 1 & 4\end{pmatrix}.
-$$
+**Rule.** The entry $`(XY)_{ij}`$ is the dot product of row $`i`$ of $`X`$ with column $`j`$ of $`Y`$. The sizes are $`A`$: $`2\times3`$, $`B`$: $`3\times2`$, $`C`$: $`2\times2`$. All the products below are defined, because the inner numbers are equal in each case.
 
-Then
+**Part 1: The path $`(AB)C`$.** First, $`AB`$ is $`(2\times3)(3\times2)=2\times2`$:
 
-$$
-(AB)C=\begin{pmatrix}5 & 2 \cr 1 & 4\end{pmatrix}\begin{pmatrix}2 & 1 \cr 0 & -1\end{pmatrix}=\begin{pmatrix}5\cdot 2+2\cdot 0 & 5\cdot 1+2\cdot(-1) \cr 1\cdot 2+4\cdot 0 & 1\cdot 1+4\cdot(-1)\end{pmatrix}=\begin{pmatrix}10 & 3 \cr 2 & -3\end{pmatrix}.
-$$
+```math
+AB=\begin{pmatrix} 1\cdot1+2\cdot2+0\cdot(-1) & 1\cdot0+2\cdot1+0\cdot3 \\ 0\cdot1+1\cdot2+1\cdot(-1) & 0\cdot0+1\cdot1+1\cdot3 \end{pmatrix}=\begin{pmatrix} 5 & 2 \\ 1 & 4 \end{pmatrix}.
+```
 
-## 2. Computing $A(BC)$
+Then $`(AB)C`$ is $`(2\times2)(2\times2)=2\times2`$:
 
-First, $BC$ is $3\times 2$:
+```math
+(AB)C=\begin{pmatrix} 5\cdot2+2\cdot0 & 5\cdot1+2\cdot(-1) \\ 1\cdot2+4\cdot0 & 1\cdot1+4\cdot(-1) \end{pmatrix}=\begin{pmatrix} 10 & 3 \\ 2 & -3 \end{pmatrix}.
+```
 
-$$
-BC=\begin{pmatrix}1\cdot 2+0\cdot 0 & 1\cdot 1+0\cdot(-1) \cr 2\cdot 2+1\cdot 0 & 2\cdot 1+1\cdot(-1) \cr (-1)\cdot 2+3\cdot 0 & (-1)\cdot 1+3\cdot(-1)\end{pmatrix}=\begin{pmatrix}2 & 1 \cr 4 & 1 \cr -2 & -4\end{pmatrix}.
-$$
+**Part 2: The path $`A(BC)`$.** First, $`BC`$ is $`(3\times2)(2\times2)=3\times2`$:
 
-Then
+```math
+BC=\begin{pmatrix} 1\cdot2+0\cdot0 & 1\cdot1+0\cdot(-1) \\ 2\cdot2+1\cdot0 & 2\cdot1+1\cdot(-1) \\ -1\cdot2+3\cdot0 & -1\cdot1+3\cdot(-1) \end{pmatrix}=\begin{pmatrix} 2 & 1 \\ 4 & 1 \\ -2 & -4 \end{pmatrix}.
+```
 
-$$
-A(BC)=\begin{pmatrix}1 & 2 & 0 \cr 0 & 1 & 1\end{pmatrix}\begin{pmatrix}2 & 1 \cr 4 & 1 \cr -2 & -4\end{pmatrix}=\begin{pmatrix}1\cdot 2+2\cdot 4+0\cdot(-2) & 1\cdot 1+2\cdot 1+0\cdot(-4) \cr 0\cdot 2+1\cdot 4+1\cdot(-2) & 0\cdot 1+1\cdot 1+1\cdot(-4)\end{pmatrix}=\begin{pmatrix}10 & 3 \cr 2 & -3\end{pmatrix}.
-$$
+Then $`A(BC)`$ is $`(2\times3)(3\times2)=2\times2`$:
 
-## 3. Comparison of the results
+```math
+A(BC)=\begin{pmatrix} 1\cdot2+2\cdot4+0\cdot(-2) & 1\cdot1+2\cdot1+0\cdot(-4) \\ 0\cdot2+1\cdot4+1\cdot(-2) & 0\cdot1+1\cdot1+1\cdot(-4) \end{pmatrix}=\begin{pmatrix} 10 & 3 \\ 2 & -3 \end{pmatrix}.
+```
 
-$$
-(AB)C=\begin{pmatrix}10 & 3 \cr 2 & -3\end{pmatrix}=A(BC).
-$$
+**Part 3: Comparison of the results.** Both paths give the same matrix:
 
-Both calculation paths give the same matrix.
+```math
+(AB)C=A(BC)=\begin{pmatrix} 10 & 3 \\ 2 & -3 \end{pmatrix}.
+```
 
-## 4. Number of intermediate operations
+**Part 4: Comparison of the number of operations.** A product of an $`m\times n`$ matrix and an $`n\times q`$ matrix has $`mq`$ entries, and each entry needs $`n`$ multiplications, so it needs $`mnq`$ multiplications in total.
 
-Multiplying a $p\times q$ matrix by a $q\times r$ matrix takes $p\cdot q\cdot r$ multiplications of numbers.
-
-| Path | First product | Second product | Total |
+| Path | First product | Second product | Total multiplications |
 |---|---|---|---|
-| $(AB)C$ | $AB$: $2\cdot 3\cdot 2=12$ | $(AB)C$: $2\cdot 2\cdot 2=8$ | $20$ |
-| $A(BC)$ | $BC$: $3\cdot 2\cdot 2=12$ | $A(BC)$: $2\cdot 3\cdot 2=12$ | $24$ |
+| $`(AB)C`$ | $`AB`$: $`2\cdot3\cdot2=12`$ | $`(AB)C`$: $`2\cdot2\cdot2=8`$ | $`20`$ |
+| $`A(BC)`$ | $`BC`$: $`3\cdot2\cdot2=12`$ | $`A(BC)`$: $`2\cdot3\cdot2=12`$ | $`24`$ |
 
-The path $(AB)C$ needs $20$ multiplications, while $A(BC)$ needs $24$. The intermediate matrices are also different: $AB$ is $2\times 2$, but $BC$ is $3\times 2$.
+So the result is the same, but the path $`(AB)C`$ uses fewer multiplications ($`20`$ against $`24`$) in this example. The reason is that in this path the intermediate matrix $`AB`$ is only $`2\times2`$, while in the other path the intermediate matrix $`BC`$ is larger, $`3\times2`$.
 
-## 5. What associativity means
+**Part 5: What associativity means.** Associativity means that for matrices of compatible sizes
 
-Associativity means that the way the factors are grouped does not change the final result:
+```math
+(AB)C=A(BC),
+```
 
-$$
-(AB)C=A(BC).
-$$
+so the way we place the brackets does not change the result, and we can write the product simply as $`ABC`$. In this example we checked it directly: both paths gave $`\begin{pmatrix} 10 & 3 \\ 2 & -3 \end{pmatrix}`$. It is important that associativity allows us to change the brackets, but it does not allow us to change the order of the factors. We still cannot write $`BAC`$ instead of $`ABC`$, because matrix multiplication is not commutative (see Exercise 4). The brackets only change the amount of work, as Part 4 shows.
 
-For this reason the product can be written as $ABC$ without parentheses. Associativity does not allow changing the order of the factors, because matrix multiplication is not commutative. It does allow choosing the grouping, and a good choice can reduce the amount of computation.
-
-> **Takeaway:** two different calculation paths give the same result because matrix multiplication is associative, although the number of operations can differ.
+**Verification.** We check one entry independently. The entry in row 1, column 2 of $`(AB)C`$ is $`5\cdot1+2\cdot(-1)=3`$, and the entry in row 1, column 2 of $`A(BC)`$ is $`1\cdot1+2\cdot1+0\cdot(-4)=3`$. They are equal, and both match the entry $`3`$ of the final matrix.
