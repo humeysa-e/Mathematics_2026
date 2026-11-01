@@ -1,58 +1,58 @@
-# Exercise 14. Rotation Matrices: Solution
+# Exercise 14. Rotation Matrices
 
-The matrix for a rotation through an angle $\theta$ is
+## Question
 
-$$
-R(\theta)=\begin{pmatrix}\cos\theta & -\sin\theta \cr \sin\theta & \cos\theta\end{pmatrix}.
-$$
+The matrix for a rotation through an angle $`\theta`$ is
 
-## 1. Computing $R(\alpha)R(\beta)$
+```math
+R(\theta)=\begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}.
+```
 
-$$
-R(\alpha)R(\beta)=\begin{pmatrix}\cos\alpha & -\sin\alpha \cr \sin\alpha & \cos\alpha\end{pmatrix}\begin{pmatrix}\cos\beta & -\sin\beta \cr \sin\beta & \cos\beta\end{pmatrix}.
-$$
+Compute $`R(\alpha)R(\beta)`$ and, using the angle-sum formulas for sine and cosine, show that
 
-Multiplying entry by entry:
+```math
+R(\alpha)R(\beta)=R(\alpha+\beta).
+```
 
-$$
-R(\alpha)R(\beta)=\begin{pmatrix}\cos\alpha\cos\beta-\sin\alpha\sin\beta & -\cos\alpha\sin\beta-\sin\alpha\cos\beta \cr \sin\alpha\cos\beta+\cos\alpha\sin\beta & -\sin\alpha\sin\beta+\cos\alpha\cos\beta\end{pmatrix}.
-$$
+Explain the result geometrically.
 
-## 2. Using the angle-sum formulas
+> **Why this exercise:** shows the consistency between matrix algebra and the geometry of composing rotations.
 
-The angle-sum formulas are
+## Solution
 
-$$
-\cos(\alpha+\beta)=\cos\alpha\cos\beta-\sin\alpha\sin\beta,
-$$
+**Rule.** We multiply rows by columns, and then we use the angle-sum formulas
 
-$$
-\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta.
-$$
+```math
+\cos(\alpha+\beta)=\cos\alpha\cos\beta-\sin\alpha\sin\beta, \qquad \sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta.
+```
 
-Applying them to each entry:
+**Part 1: Computing $`R(\alpha)R(\beta)`$.** Each entry is the dot product of a row of $`R(\alpha)`$ with a column of $`R(\beta)`$:
 
-- Entry $(1,1)$: $\cos\alpha\cos\beta-\sin\alpha\sin\beta=\cos(\alpha+\beta)$.
-- Entry $(1,2)$: $-(\cos\alpha\sin\beta+\sin\alpha\cos\beta)=-\sin(\alpha+\beta)$.
-- Entry $(2,1)$: $\sin\alpha\cos\beta+\cos\alpha\sin\beta=\sin(\alpha+\beta)$.
-- Entry $(2,2)$: $\cos\alpha\cos\beta-\sin\alpha\sin\beta=\cos(\alpha+\beta)$.
+```math
+R(\alpha)R(\beta)=\begin{pmatrix} \cos\alpha\cos\beta-\sin\alpha\sin\beta & -\cos\alpha\sin\beta-\sin\alpha\cos\beta \\ \sin\alpha\cos\beta+\cos\alpha\sin\beta & -\sin\alpha\sin\beta+\cos\alpha\cos\beta \end{pmatrix}.
+```
+
+**Part 2: Using the angle-sum formulas.** We recognize each entry:
+
+- Row 1, column 1: $`\cos\alpha\cos\beta-\sin\alpha\sin\beta=\cos(\alpha+\beta)`$.
+- Row 1, column 2: $`-\cos\alpha\sin\beta-\sin\alpha\cos\beta=-(\sin\alpha\cos\beta+\cos\alpha\sin\beta)=-\sin(\alpha+\beta)`$.
+- Row 2, column 1: $`\sin\alpha\cos\beta+\cos\alpha\sin\beta=\sin(\alpha+\beta)`$.
+- Row 2, column 2: $`\cos\alpha\cos\beta-\sin\alpha\sin\beta=\cos(\alpha+\beta)`$.
 
 Therefore
 
-$$
-R(\alpha)R(\beta)=\begin{pmatrix}\cos(\alpha+\beta) & -\sin(\alpha+\beta) \cr \sin(\alpha+\beta) & \cos(\alpha+\beta)\end{pmatrix}=R(\alpha+\beta).
-$$
+```math
+R(\alpha)R(\beta)=\begin{pmatrix} \cos(\alpha+\beta) & -\sin(\alpha+\beta) \\ \sin(\alpha+\beta) & \cos(\alpha+\beta) \end{pmatrix}=R(\alpha+\beta).
+```
 
-## 3. Geometric explanation
+**Part 3: Geometric explanation.** The matrix $`R(\theta)`$ rotates every vector counterclockwise by the angle $`\theta`$ around the origin. The product $`R(\alpha)R(\beta)x`$ means that we first rotate $`x`$ by $`\beta`$ and then rotate the result by $`\alpha`$. Two rotations around the same point, one after the other, give a single rotation by the total angle $`\alpha+\beta`$. So the algebraic result $`R(\alpha)R(\beta)=R(\alpha+\beta)`$ agrees with the geometry: composing rotations adds their angles.
 
-The matrix $R(\beta)$ rotates a vector by the angle $\beta$, and then $R(\alpha)$ rotates the result by the angle $\alpha$. Rotating first by $\beta$ and then by $\alpha$ turns the vector through a total angle of $\alpha+\beta$, which is exactly what $R(\alpha+\beta)$ does.
+Since $`\alpha+\beta=\beta+\alpha`$, we also get $`R(\beta)R(\alpha)=R(\alpha+\beta)`$, so rotations in the plane commute, unlike the products in Exercise 4 and Exercise 9.
 
-So multiplying rotation matrices corresponds to adding the angles of rotation. Since $\alpha+\beta=\beta+\alpha$, we also get
+**Verification.** We check a special case, $`\alpha=\beta=90^\circ`$. Here $`R(90^\circ)=\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}`$, so
 
-$$
-R(\alpha)R(\beta)=R(\beta)R(\alpha).
-$$
+```math
+R(90^\circ)R(90^\circ)=\begin{pmatrix} 0\cdot0+(-1)\cdot1 & 0\cdot(-1)+(-1)\cdot0 \\ 1\cdot0+0\cdot1 & 1\cdot(-1)+0\cdot0 \end{pmatrix}=\begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix}=R(180^\circ).
+```
 
-Rotation matrices in the plane therefore commute, unlike matrices in general.
-
-> **Takeaway:** the algebra of matrix multiplication agrees with the geometry of composing rotations: multiplying the matrices adds the angles.
+This matches the formula, because $`\cos180^\circ=-1`$ and $`\sin180^\circ=0`$.
