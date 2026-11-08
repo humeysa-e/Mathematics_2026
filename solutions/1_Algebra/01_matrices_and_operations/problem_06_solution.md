@@ -50,6 +50,6 @@ B^TA^T=\begin{pmatrix} 1\cdot1+2\cdot2+(-1)\cdot3 & 1\cdot4+2\cdot5+(-1)\cdot6 \
 (AB)^T=B^TA^T=\begin{pmatrix} 2 & 8 \\ 11 & 23 \end{pmatrix}.
 ```
 
-Note that the order of the factors is reversed. The product $`A^TB^T`$ would not even be defined here, because $`A^T`$ is $`3 \times 2`$ and $`B^T`$ is $`2 \times 3`$ would give a $`3 \times 3`$ matrix, which has the wrong size to equal $`(AB)^T`$.
+Note that the order of the factors is reversed. The product $`A^TB^T`$ is defined, because $`A^T`$ is $`3 \times 2`$ and $`B^T`$ is $`2 \times 3`$, but it has size $`3 \times 3`$, whereas $`(AB)^T`$ has size $`2 \times 2`$. Matrices of different sizes cannot be equal, so $`A^TB^T \neq (AB)^T`$. Therefore the order must be reversed.
 
 **Verification.** We check one entry in a different way. The entry in row 1, column 2 of $`(AB)^T`$ is the entry in row 2, column 1 of $`AB`$, which is $`4\cdot1+5\cdot2+6\cdot(-1)=8`$. The entry in row 1, column 2 of $`B^TA^T`$ is $`1\cdot4+2\cdot5+(-1)\cdot6=8`$. They match.
