@@ -40,9 +40,4 @@ M^{-1}=\frac{1}{ad-bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}.
 A(t)^{-1}=\frac{1}{1-t^2}\begin{pmatrix} 1 & -t \\ -t & 1 \end{pmatrix}.
 ```
 
-**Part 4: The excluded values.** For $`t=1`$ and $`t=-1`$ the denominator $`1-t^2`$ equals $`0`$, so the formula cannot be used, and the inverse does not exist. This agrees with the structure of the matrix: for $`t=1`$ both rows are $`(1,1)`$, and for $`t=-1`$ the rows are $`(1,-1)`$ and $`(-1,1)`$, where the second row is $`-1`$ times the first. In both cases the rows are dependent, so the matrix is not invertible.
-
-**Conclusion.** The matrix $`A(t)`$ is invertible exactly for $`t \neq \pm 1`$, and then
-
-```math
-A(t)^{-1}=\frac{1}{1-t^2}\
+**Part 4: The excluded
